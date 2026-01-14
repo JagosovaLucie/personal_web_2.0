@@ -7,13 +7,13 @@ import typescriptIcon from "./typescript-icon.svg";
 import figmaIcon from "./figma-icon.svg";
 import webflowIcon from "./webflow-icon.svg";
 
-export {
-  htmlIcon,
-  cssIcon,
-  sassIcon,
-  bootstrapIcon,
-  reactIcon,
-  typescriptIcon,
-  figmaIcon,
-  webflowIcon,
-};
+export const skill_icons = [
+  { id: "html", src: htmlIcon, alt: "HTML" },
+  { id: "css", src: cssIcon, alt: "CSS" },
+  { id: "sass", src: sassIcon, alt: "Sass" },
+  { id: "bootstrap", src: bootstrapIcon, alt: "Bootstrap" },
+  { id: "react", src: reactIcon, alt: "React" },
+  { id: "typescript", src: typescriptIcon, alt: "TypeScript" },
+  { id: "figma", src: figmaIcon, alt: "Figma" },
+  { id: "webflow", src: webflowIcon, alt: "Webflow" },
+] as const;

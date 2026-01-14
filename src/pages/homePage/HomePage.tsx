@@ -27,11 +27,11 @@ const MainPage = () => {
   // typewriter efekt
   useEffect(() => {
     if (index >= fullText.length) return;
-    const timeoutId = window.setTimeout(() => {
+    const timeoutId = globalThis.setTimeout(() => {
       setIndex((prev) => prev + 1);
     }, speed);
-
-    return () => window.clearTimeout(timeoutId);
+    // cleanup
+    return () => globalThis.clearTimeout(timeoutId);
   }, [index, fullText]);
 
   return (

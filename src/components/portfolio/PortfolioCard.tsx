@@ -35,11 +35,11 @@ const ProjectCard = ({ project }: ProjectProps) => {
       >
         <div
           className={`card-image-wrapper ${
-            isImageLoaded ? "card-image--loaded" : "card-image--loading"
+            isImageLoaded ? "card-image--loaded" : ""
           }`}
         >
           {/* skeleton */}
-          {!isImageLoaded && <div className="card-image-skeleton" />}
+          <div className="card-image-skeleton" />
 
           {/* obrázek po načení */}
           <img
@@ -47,7 +47,7 @@ const ProjectCard = ({ project }: ProjectProps) => {
             alt={title}
             className="card-bg-image"
             onLoad={() => setIsImageLoaded(true)}
-            loading="lazy"
+            onError={() => setIsImageLoaded(true)}
           />
 
           <h2 className="card-title">{title}</h2>

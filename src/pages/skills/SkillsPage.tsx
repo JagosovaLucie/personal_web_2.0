@@ -1,27 +1,7 @@
 import "./SkillsPage.scss";
 import { useTranslation } from "react-i18next";
-import {
-  htmlIcon,
-  cssIcon,
-  sassIcon,
-  bootstrapIcon,
-  reactIcon,
-  typescriptIcon,
-  figmaIcon,
-  webflowIcon,
-} from "../../assets/images/skills-icons";
+import { skill_icons } from "../../assets/images/skills-icons";
 import { useState, useEffect } from "react";
-
-const icons = [
-  htmlIcon,
-  cssIcon,
-  sassIcon,
-  bootstrapIcon,
-  reactIcon,
-  typescriptIcon,
-  figmaIcon,
-  webflowIcon,
-];
 
 const SkillsPage = () => {
   const { t } = useTranslation();
@@ -37,57 +17,54 @@ const SkillsPage = () => {
 
   const displayed = text.slice(0, index); // část textu, která se aktuálně zobrazuje
 
-  // reset při změně překladu
+  //------------------typewriter
   useEffect(() => {
-    setIndex(0);
-    setIsDeleting(false);
-  }, [text]);
-
-  // typewriter
-  useEffect(() => {
-    let timeoutId: number;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
     // 1) Psaní znak po znaku
     if (!isDeleting && index < text.length) {
-      timeoutId = window.setTimeout(() => {
+      timeoutId = globalThis.setTimeout(() => {
         setIndex((i) => i + 1);
       }, typeSpeed);
     }
 
     // 2) Pauza po dopsání celého textu
     else if (!isDeleting && index === text.length) {
-      timeoutId = window.setTimeout(() => {
+      timeoutId = globalThis.setTimeout(() => {
         setIsDeleting(true);
       }, pauseAfterWrite);
     }
 
     // 3) Mazání znak po znaku
     else if (isDeleting && index > 0) {
-      timeoutId = window.setTimeout(() => {
+      timeoutId = globalThis.setTimeout(() => {
         setIndex((i) => i - 1);
       }, deleteSpeed);
     }
 
     // 4) Pauza po smazání všeho
     else if (isDeleting && index === 0) {
-      timeoutId = window.setTimeout(() => {
+      timeoutId = globalThis.setTimeout(() => {
         setIsDeleting(false); // začni znovu psát
       }, pauseAfterDelete);
     }
 
     //cleanup
-    return () => clearTimeout(timeoutId);
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, [index, isDeleting, text]);
 
   return (
     <section className="skills-wrapper">
       <div className="icons-container">
-        {icons.map((oneIcon, index) => (
+        {skill_icons.map((icon) => (
           <img
-            key={index}
-            src={oneIcon}
-            alt={`icon-${index}`}
+            key={icon.id}
+            src={icon.src}
+            alt={icon.alt}
             className="skill-icon"
+            loading="lazy"
           />
         ))}
       </div>
