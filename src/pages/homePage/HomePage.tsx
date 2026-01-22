@@ -46,14 +46,13 @@ const MainPage = () => {
 
       {isFinished && (
         <div className="hero-dots hero-dots-visible">
-          {DOT_LINKS.map(({ path, key }) => (
+          {DOT_LINKS.map(({ path }) => (
             <NavLink
               key={path}
               to={path}
               className={({ isActive }) =>
                 "hero-dot" + (isActive ? " hero-dot-active" : "")
               }
-              aria-label={`${t("home_page.dots")} ${t(`navbar.${key}`)}`}
             />
           ))}
         </div>

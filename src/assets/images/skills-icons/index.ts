@@ -6,14 +6,16 @@ import reactIcon from "./react-icon.svg";
 import typescriptIcon from "./typescript-icon.svg";
 import figmaIcon from "./figma-icon.svg";
 import webflowIcon from "./webflow-icon.svg";
+import sql from "./SQL-icon.svg";
 
 export const skill_icons = [
+  { id: "react", src: reactIcon, alt: "React" },
+  { id: "typescript", src: typescriptIcon, alt: "TypeScript" },
   { id: "html", src: htmlIcon, alt: "HTML" },
   { id: "css", src: cssIcon, alt: "CSS" },
   { id: "sass", src: sassIcon, alt: "Sass" },
   { id: "bootstrap", src: bootstrapIcon, alt: "Bootstrap" },
-  { id: "react", src: reactIcon, alt: "React" },
-  { id: "typescript", src: typescriptIcon, alt: "TypeScript" },
+  { id: "sql", src: sql, alt: "SQL" },
   { id: "figma", src: figmaIcon, alt: "Figma" },
   { id: "webflow", src: webflowIcon, alt: "Webflow" },
 ] as const;

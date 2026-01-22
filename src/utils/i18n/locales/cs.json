@@ -12,9 +12,8 @@
   "home_page": {
     "h1_text": "Ahoj, já jsem Lucie",
     "hero_text_1": "front-end",
-    "hero_text_2": "vývojářka",
-    "dots": "odkaz na"
-  },
+    "hero_text_2": "vývojářka"
+    },
   "skills_page": {
     "loading": "načítání..."
   },
@@ -39,8 +38,8 @@
         "title": "react typescript developer",
         "company": "urc systems",
         "period": "04 2025 – 09 2025",
-        "description": "Podílela jsem se na vývoji front-endového rozhraní bezpečnostních systémů ve vojenském sektoru. Vyvíjela jsem nové funkcionality v Reactu a TypeScriptu a vytvářela komponenty v Material UI.",
-        "technologies": "React, Typescript, Material UI, GitLub"
+        "description": "Podílela jsem se na vývoji front-endového rozhraní bezpečnostních systémů ve vojenském sektoru. Vyvíjela jsem nové funkcionality a komponenty v Reactu s TypeScriptem.",
+        "technologies": "React, TypeScript, MUI, GitLub"
       }
     }
   },

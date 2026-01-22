@@ -12,8 +12,7 @@
   "home_page": {
     "h1_text": "Hello, I'm Lucie",
     "hero_text_1": "front-end",
-    "hero_text_2": "developer",
-    "dots": "link to"
+    "hero_text_2": "developer"
   },
   "skills_page": {
     "loading": "loading..."
@@ -39,8 +38,8 @@
         "title": "react typescript developer",
         "company": "urc systems",
         "period": "04 2025 – 09 2025",
-        "description": "I contributed to the development of the front-end interface for security systems in the military sector. I developed new features using React and TypeScript and created components with Material UI.",
-        "technologies": "React, Typescript, Material UI, GitLub"
+        "description": "I contributed to the development of the front-end interface for security systems in the military sector. I developed new features and components in React with TypeScript.",
+        "technologies": "React, TypeScript, MUI, GitLub"
       }
     }
   },
