@@ -1,11 +1,86 @@
 .portfolio-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: space(7);
   padding-top: $padding-top-xl;
-    perspective: 1000px;
 
   @include max(md) {
     padding-top: $padding-top-md;
+  }
+}
+
+/* Embla Carousel */
+.embla {
+  --slide-spacing: #{space(7)};
+  --slide-size: 100%;
+    perspective: 1000px;
+
+
+  /* Tablet: 2 karty */
+  @include min(md) {
+    --slide-size: 50%;
+  } 
+
+  /* Desktop: 3 karty */
+  @include min(lg) {
+    --slide-size: 33.3%;
+  }
+
+  &__viewport {
+    overflow: hidden;
+    transform-style: preserve-3d;
+  }
+
+  &__container {
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+
+    // spacing mezi slidy (doporučený pattern)
+    margin-left: calc(var(--slide-spacing) * -1);
+  }
+
+  &__slide {
+    flex: 0 0 var(--slide-size);
+    min-width: 0;
+    padding-left: var(--slide-spacing);
+
+    /* aby karta vyplnila slide */
+    > .portfolio-card {
+      height: 100%;
+    }
+  }
+
+  /* ------tečky */
+  &__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: space(5);
+    margin-top: space(6);
+  }
+
+  &__dot {
+    width: 20px;
+    height: 20px;
+    display: block;
+    border-radius: 50%;
+    border: 2px solid var(--color-text);
+    background: transparent;
+    cursor: pointer;
+    transition:
+      transform 120ms ease,
+      background-color 120ms ease,
+      border-color 120ms ease;
+
+    &:hover {
+      border-color: var(--color-text-1);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-text);
+      outline-offset: 3px;
+    }
+
+    &.is-selected {
+      background: var(--color-text);
+      border-color: var(--color-text);
+    }
   }
 }

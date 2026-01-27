@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "i18next": "^25.6.3",
     "open-props": "^1.7.17",
     "react": "^19.2.0",

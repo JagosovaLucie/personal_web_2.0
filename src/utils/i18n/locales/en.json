@@ -44,15 +44,19 @@
     }
   },
   "portfolio_page": {
-    "project1": {
+     "project1": {
+      "project_name": "Investment Calculator",
+      "project_description": "The calculator allows you to enter parameters and obtain a clear evaluation of the investment over time. The validated form sends the input parameters via REST API and displays the processed results in a graph. Localization (i18n) is included."
+    },
+    "project2": {
       "project_name": "Sestav HB",
       "project_description": "A presentation website for the construction company SESTAV HB s.r.o., featuring a project gallery built with the PhotoSwipe library. The project also included domain management, hosting, and SEO optimization."
     },
-    "project2": {
+    "project3": {
       "project_name": "Cashflow tracker",
       "project_description": "The application allows users to record income and expenses, filter, edit, delete, and manage them using various features. All data is stored and handled through a Firebase database."
     },
-    "project3": {
+    "project4": {
       "project_name": "Weather app",
       "project_description": "A weather application that displays current conditions. The homepage shows weather data for five major cities, and a second page allows users to enter any location worldwide and retrieve real-time information via an API."
     }

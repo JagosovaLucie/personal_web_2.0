@@ -161,25 +161,15 @@
   }
 }
 
-/* delay pro jednotlivé karty */
-.portfolio-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.portfolio-card:nth-child(2) {
-  animation-delay: 0.6s;
-}
-.portfolio-card:nth-child(1) {
-  animation-delay: 0.9s;
+@for $i from 1 through 3 {
+  .embla__slide:nth-child(#{$i}) .portfolio-card {
+    animation-delay: ((3 - $i) * 0.3s);
+  }
 }
 
+//na mobilu bez zpoždění
 @include max(md) {
-  .portfolio-card:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-  .portfolio-card:nth-child(2) {
-    animation-delay: 0.4s;
-  }
-  .portfolio-card:nth-child(3) {
-    animation-delay: 0.7s;
+  .embla__slide .portfolio-card {
+    animation-delay: 0.1s !important;
   }
 }
