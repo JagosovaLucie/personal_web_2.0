@@ -2,7 +2,7 @@ import "./PortfolioCard.scss";
 import GithubIcon from "../../assets/images/common/GithubIcon";
 import type { TechnologyId } from "../../components/portfolio/technologiesIcons";
 import { TECHNOLOGY_ICONS } from "../../components/portfolio/technologiesIcons";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next"; // smazat pak trans
 import { useState } from "react";
 
 type Project = {
@@ -22,7 +22,7 @@ const ProjectCard = ({ project }: ProjectProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const title = t(`portfolio_page.${project.id}.project_name`);
-  const description = t(`portfolio_page.${project.id}.project_description`);
+  // const description = t(`portfolio_page.${project.id}.project_description`); // pak odkomentovat
 
   return (
     <article className="portfolio-card">
@@ -71,7 +71,16 @@ const ProjectCard = ({ project }: ProjectProps) => {
 
       {/* spodní část karty */}
       <div className="card-description-wrapper">
-        <p>{description}</p>
+        {/* tag p s Trans smazat */}
+        <p>
+          <Trans
+            i18nKey={`portfolio_page.${project.id}.project_description`}
+            components={{ highlight: <span className="text-highlight" /> }}
+          />
+        </p>
+
+        {/* <p>{description}</p> */} {/* odkomentovat */}
+
         {project.githubUrl && (
           <a
             href={project.githubUrl}

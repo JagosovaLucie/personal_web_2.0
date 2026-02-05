@@ -10,13 +10,12 @@
 .embla {
   --slide-spacing: #{space(7)};
   --slide-size: 100%;
-    perspective: 1000px;
-
+  perspective: 1000px;
 
   /* Tablet: 2 karty */
   @include min(md) {
     --slide-size: 50%;
-  } 
+  }
 
   /* Desktop: 3 karty */
   @include min(lg) {
@@ -25,22 +24,24 @@
 
   &__viewport {
     overflow: hidden;
-    transform-style: preserve-3d;
+    --bleed: 80px; //rezerva pro 3D efekt (kvůli overflow hidden)
+    padding-block: var(--bleed);
+    margin-block: calc(var(--bleed) * -1);
   }
 
   &__container {
     display: flex;
     touch-action: pan-y pinch-zoom;
-
-    // spacing mezi slidy (doporučený pattern)
-    margin-left: calc(var(--slide-spacing) * -1);
+    transform-style: preserve-3d;
+    margin-left: calc(var(--slide-spacing) * -1);     // spacing mezi slidy (doporučený pattern)
   }
 
   &__slide {
     flex: 0 0 var(--slide-size);
     min-width: 0;
     padding-left: var(--slide-spacing);
-
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
     /* aby karta vyplnila slide */
     > .portfolio-card {
       height: 100%;
@@ -54,6 +55,8 @@
     align-items: center;
     gap: space(5);
     margin-top: space(6);
+    opacity: 0;
+    animation: portfolio-dot-pop 0.35s ease 0.9s forwards;
   }
 
   &__dot {
@@ -64,10 +67,7 @@
     border: 2px solid var(--color-text);
     background: transparent;
     cursor: pointer;
-    transition:
-      transform 120ms ease,
-      background-color 120ms ease,
-      border-color 120ms ease;
+    transition: border-color 0.2s ease;
 
     &:hover {
       border-color: var(--color-text-1);
@@ -82,5 +82,17 @@
       background: var(--color-text);
       border-color: var(--color-text);
     }
+  }
+}
+
+/* animace zobrazení teček - STEJNÝ JAKO V HERO*/
+@keyframes portfolio-dot-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

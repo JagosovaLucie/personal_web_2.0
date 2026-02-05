@@ -46,7 +46,7 @@
   "portfolio_page": {
      "project1": {
       "project_name": "Investment Calculator",
-      "project_description": "The calculator allows you to enter parameters and obtain a clear evaluation of the investment over time. The validated form sends the input parameters via REST API and displays the processed results in a graph. Localization (i18n) is included."
+      "project_description": "The calculator allows you to enter parameters and obtain a clear evaluation of the investment over time. The validated form sends the input parameters via REST API and displays the processed results in a graph. <highlight>!Project in progress!</highlight>"
     },
     "project2": {
       "project_name": "Sestav HB",
