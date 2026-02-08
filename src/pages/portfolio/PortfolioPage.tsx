@@ -7,7 +7,7 @@ import cashflowImage from "@/assets/images/portfolio/cashflow_tracker.jpg";
 import sestavhbImage from "@/assets/images/portfolio/sestav_hb.jpg";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import type { EmblaCarouselType, EmblaOptionsType } from "embla-carousel";
+import type { EmblaCarouselType } from "embla-carousel";
 
 export type Project = {
   id: string;
@@ -46,47 +46,40 @@ const PORTFOLIO_ITEMS: Project[] = [
   },
 ];
 
-const options: EmblaOptionsType = {
-  align: "start",
-  containScroll: "trimSnaps",
-  loop: false,
-  slidesToScroll: 1,
-};
-
 const PortfolioPage = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(options);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    slidesToScroll: "auto",
+  });
+
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const [selectedSnap, setSelectedSnap] = useState(0);
 
-  const onInit = useCallback((api: EmblaCarouselType) => {
+  const goTo = useCallback(
+    (index: number) => emblaApi?.scrollTo(index),
+    [emblaApi],
+  );
+
+  // počet teček + aktivní tečka
+  const updatePagination = useCallback((api: EmblaCarouselType) => {
     setScrollSnaps(api.scrollSnapList());
-  }, []);
-
-  const onSelect = useCallback((api: EmblaCarouselType) => {
-    setSelectedIndex(api.selectedScrollSnap());
+    setSelectedSnap(api.selectedScrollSnap());
   }, []);
 
   useEffect(() => {
     if (!emblaApi) return;
 
-    onInit(emblaApi);
-    onSelect(emblaApi);
+    const raf = requestAnimationFrame(() => updatePagination(emblaApi));
 
-    emblaApi.on("reInit", onInit);
-    emblaApi.on("reInit", onSelect);
-    emblaApi.on("select", onSelect);
-
+    emblaApi.on("reInit", updatePagination);
+    emblaApi.on("select", updatePagination);
+    //cleanup
     return () => {
-      emblaApi.off("reInit", onInit);
-      emblaApi.off("reInit", onSelect);
-      emblaApi.off("select", onSelect);
+      cancelAnimationFrame(raf);
+      emblaApi.off("reInit", updatePagination);
+      emblaApi.off("select", updatePagination);
     };
-  }, [emblaApi, onInit, onSelect]);
-
-  const scrollTo = useCallback(
-    (index: number) => emblaApi?.scrollTo(index),
-    [emblaApi],
-  );
+  }, [emblaApi, updatePagination]);
 
   return (
     <section className="portfolio-wrapper">
@@ -101,19 +94,16 @@ const PortfolioPage = () => {
           </div>
         </div>
 
-        {/* Dots */}
         {scrollSnaps.length > 1 && (
           <div className="embla__dots" aria-label="Carousel pagination">
             {scrollSnaps.map((_, index) => (
               <button
                 key={index}
                 type="button"
-                className={`embla__dot ${
-                  index === selectedIndex ? "is-selected" : ""
-                }`}
-                onClick={() => scrollTo(index)}
+                className={`embla__dot ${index === selectedSnap ? "is-selected" : ""}`}
+                onClick={() => goTo(index)}
                 aria-label={`Přejít na pozici ${index + 1}`}
-                aria-current={index === selectedIndex ? "true" : undefined}
+                aria-current={index === selectedSnap ? "true" : undefined}
               />
             ))}
           </div>

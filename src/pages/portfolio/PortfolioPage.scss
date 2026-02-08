@@ -24,6 +24,7 @@
 
   &__viewport {
     overflow: hidden;
+    transform-style: preserve-3d;
     --bleed: 80px; //rezerva pro 3D efekt (kvůli overflow hidden)
     padding-block: var(--bleed);
     margin-block: calc(var(--bleed) * -1);
@@ -32,8 +33,7 @@
   &__container {
     display: flex;
     touch-action: pan-y pinch-zoom;
-    transform-style: preserve-3d;
-    margin-left: calc(var(--slide-spacing) * -1);     // spacing mezi slidy (doporučený pattern)
+    margin-left: calc(var(--slide-spacing) * -1); // spacing mezi slidy (doporučený pattern)
   }
 
   &__slide {
