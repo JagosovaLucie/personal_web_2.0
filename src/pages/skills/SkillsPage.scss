@@ -50,12 +50,12 @@
 
       &::after {
         content: "";
-        width: 6px;
-        height: 1em;
+        width: 0.15em;
+        height: 0.8em;
         background: currentColor;
         display: inline-block;
         margin-left: 4px;
-        animation: blink 0.7s steps(1) infinite;
+        animation: skills-cursor-blink 0.9s steps(1) infinite;
       }
     }
   }
@@ -75,6 +75,8 @@
     }
   }
 }
+
+/* -------------------animace */
 
 //animace ikon
 @keyframes icon-in {
@@ -101,7 +103,7 @@
 }
 
 // animace kurzoru
-@keyframes blink {
+@keyframes skills-cursor-blink {
   0% {
     opacity: 1;
   }

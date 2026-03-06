@@ -3,33 +3,32 @@ import { useTranslation } from "react-i18next";
 import { skill_icons } from "../../assets/images/skills-icons";
 import { useState, useEffect } from "react";
 
-const SkillsPage = () => {
-  const { t } = useTranslation();
-  const text = t("skills_page.loading");
-
-  const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
   const typeSpeed = 200; // rychlost psaní
   const deleteSpeed = 80; // rychlost mazání
   const pauseAfterWrite = 700;
   const pauseAfterDelete = 400;
 
-  const displayed = text.slice(0, index); // část textu, která se aktuálně zobrazuje
+const SkillsPage = () => {
+  const { t } = useTranslation();
+  const [index, setIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const loadingText = t("skills_page.loading");
+  const typedText = loadingText.slice(0, index);
 
   //------------------typewriter
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
     // 1) Psaní znak po znaku
-    if (!isDeleting && index < text.length) {
+    if (!isDeleting && index < loadingText.length) {
       timeoutId = globalThis.setTimeout(() => {
         setIndex((i) => i + 1);
       }, typeSpeed);
     }
 
     // 2) Pauza po dopsání celého textu
-    else if (!isDeleting && index === text.length) {
+    else if (!isDeleting && index === loadingText.length) {
       timeoutId = globalThis.setTimeout(() => {
         setIsDeleting(true);
       }, pauseAfterWrite);
@@ -53,7 +52,7 @@ const SkillsPage = () => {
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [index, isDeleting, text]);
+  }, [index, isDeleting, loadingText]);
 
   return (
     <section className="skills-wrapper">
@@ -69,7 +68,7 @@ const SkillsPage = () => {
         ))}
       </div>
       <div className="loading-container">
-        <p className="typewriter-skillpage">{displayed}</p>
+        <p className="typewriter-skillpage">{typedText}</p>
       </div>
     </section>
   );

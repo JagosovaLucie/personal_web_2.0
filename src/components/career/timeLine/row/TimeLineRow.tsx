@@ -1,19 +1,19 @@
 import TimelineItemCard from "./card/TimelineItemCard";
-import type { TimelineItem } from "../TimeLine";
+import type { JobPosition } from "../TimeLine";
 import "./TimeLineRow.scss";
 
-type TimelineRowProps = {
-  item: TimelineItem;
+type Props = {
+  onePosition: JobPosition;
   opened: boolean;
   onToggle: () => void;
 };
 
-const TimelineRow = ({ item, opened, onToggle }: TimelineRowProps) => {
+const TimelineRow = ({ onePosition, opened, onToggle }: Props) => {
   return (
     <div className="timeline-row">
       {/* 1) levý sloupec – rok */}
       <div className="timeline-year-cell">
-        <span className="timeline-year">{item.year}</span>
+        <span className="timeline-year">{onePosition.year}</span>
       </div>
 
       {/* 2) prostřední sloupec – osa + kulička */}
@@ -25,8 +25,8 @@ const TimelineRow = ({ item, opened, onToggle }: TimelineRowProps) => {
       {/* 3) pravý sloupec – karta */}
       <div className="timeline-card-cell">
         <TimelineItemCard
-          id={item.id}
-          job={item.job}
+          id={onePosition.id}
+          job={onePosition.job}
           opened={opened}
           handleToggle={onToggle}
         />

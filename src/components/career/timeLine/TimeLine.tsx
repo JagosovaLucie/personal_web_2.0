@@ -2,13 +2,13 @@ import { useState } from "react";
 import TimelineRow from "./row/TimeLineRow";
 import "./TimeLine.scss";
 
-export type TimelineItem = {
+export type JobPosition = {
   id: string;
   year: number;
   job: boolean;
 };
 
-const TIMELINE_ITEMS: TimelineItem[] = [
+const TIMELINE_POSITIONS: JobPosition[] = [
   { id: "job3", year: 2026, job: false },
   { id: "job2", year: 2025, job: true },
   { id: "job1", year: 2023, job: true },
@@ -23,12 +23,12 @@ const TimeLine = () => {
 
   return (
     <section className="timeline">
-      {TIMELINE_ITEMS.map((item) => (
+      {TIMELINE_POSITIONS.map((onePosition) => (
         <TimelineRow
-          key={item.id}
-          item={item}
-          opened={item.id === openId}
-          onToggle={() => handleToggle(item.id)}
+          key={onePosition.id}
+          onePosition={onePosition}
+          opened={onePosition.id === openId}
+          onToggle={() => handleToggle(onePosition.id)}
         />
       ))}
     </section>

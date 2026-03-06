@@ -4,9 +4,9 @@ import "./ThemeToggle.scss";
 const storageKey = "theme-preference";
 
 const getColorPreference = (): "light" | "dark" => {
-  if (typeof window === "undefined") return "light";
+  if (typeof globalThis === "undefined") return "light";
   try {
-    const stored = window.localStorage.getItem(storageKey);
+    const stored = globalThis.localStorage.getItem(storageKey);
     return stored === "dark" || stored === "light" ? stored : "light";
   } catch {
     return "light";
@@ -25,7 +25,7 @@ const ThemeToggle = () => {
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     try {
-      window.localStorage.setItem(storageKey, theme);
+      globalThis.localStorage.setItem(storageKey, theme);
     } catch (error) {
       if (import.meta.env.DEV) console.warn(error);
     }

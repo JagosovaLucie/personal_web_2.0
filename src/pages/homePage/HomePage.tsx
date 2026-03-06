@@ -11,28 +11,27 @@ const DOT_LINKS = [
   { path: "/contact", key: "contact" },
 ];
 
-const MainPage = () => {
-  const { t } = useTranslation();
+const speed = 80; // ms na znak
 
+const HomePage = () => {
+  const { t } = useTranslation();
   const [index, setIndex] = useState(0);
 
   const line1 = t("home_page.hero_text_1");
   const line2 = t("home_page.hero_text_2");
-  const fullText = `${line1}\n${line2}`;
-
-  const speed = 80; // ms na znak
-  const typed = fullText.slice(0, index);
-  const isFinished = index >= fullText.length;
+  const heroText = `${line1}\n${line2}`;
+  const typedText = heroText.slice(0, index);
+  const isFinished = index >= heroText.length;
 
   // typewriter efekt
   useEffect(() => {
-    if (index >= fullText.length) return;
+    if (index >= heroText.length) return;
     const timeoutId = globalThis.setTimeout(() => {
       setIndex((prev) => prev + 1);
     }, speed);
     // cleanup
     return () => globalThis.clearTimeout(timeoutId);
-  }, [index, fullText]);
+  }, [index, heroText]);
 
   return (
     <section className="hero-wrapper">
@@ -40,15 +39,15 @@ const MainPage = () => {
         <h1 className="home-page-h1">{t("home_page.h1_text")}</h1>
 
         <p className="home-page-p">
-          <span className="typewriter-homepage">{typed}</span>
+          <span className="typewriter-homepage">{typedText}</span>
         </p>
       </div>
 
       {isFinished && (
         <div className="hero-dots hero-dots-visible">
-          {DOT_LINKS.map(({ path }) => (
+          {DOT_LINKS.map(({ path, key }) => (
             <NavLink
-              key={path}
+              key={key}
               to={path}
               className={({ isActive }) =>
                 "hero-dot" + (isActive ? " hero-dot-active" : "")
@@ -61,4 +60,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default HomePage;

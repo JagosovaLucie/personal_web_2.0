@@ -52,8 +52,8 @@ const PortfolioPage = () => {
     slidesToScroll: "auto",
   });
 
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
-  const [selectedSnap, setSelectedSnap] = useState(0);
+  const [selectedProject, setSelectedProject] = useState(0);
+  const [scrollDots, setScrollDots] = useState<number[]>([]);
 
   const goTo = useCallback(
     (index: number) => emblaApi?.scrollTo(index),
@@ -62,20 +62,22 @@ const PortfolioPage = () => {
 
   // počet teček + aktivní tečka
   const updatePagination = useCallback((api: EmblaCarouselType) => {
-    setScrollSnaps(api.scrollSnapList());
-    setSelectedSnap(api.selectedScrollSnap());
+    setScrollDots(api.scrollSnapList());
+    setSelectedProject(api.selectedScrollSnap());
   }, []);
 
   useEffect(() => {
     if (!emblaApi) return;
 
-    const raf = requestAnimationFrame(() => updatePagination(emblaApi));
+    const animationFrameId = requestAnimationFrame(() =>
+      updatePagination(emblaApi),
+    );
 
     emblaApi.on("reInit", updatePagination);
     emblaApi.on("select", updatePagination);
     //cleanup
     return () => {
-      cancelAnimationFrame(raf);
+      cancelAnimationFrame(animationFrameId);
       emblaApi.off("reInit", updatePagination);
       emblaApi.off("select", updatePagination);
     };
@@ -94,16 +96,16 @@ const PortfolioPage = () => {
           </div>
         </div>
 
-        {scrollSnaps.length > 1 && (
-          <div className="embla__dots" aria-label="Carousel pagination">
-            {scrollSnaps.map((_, index) => (
+        {scrollDots.length > 1 && (
+          <div className="embla__dots">
+            {scrollDots.map((_, index) => (
               <button
                 key={index}
                 type="button"
-                className={`embla__dot ${index === selectedSnap ? "is-selected" : ""}`}
+                className={`embla__dot ${index === selectedProject ? "is-selected" : ""}`}
                 onClick={() => goTo(index)}
                 aria-label={`Přejít na pozici ${index + 1}`}
-                aria-current={index === selectedSnap ? "true" : undefined}
+                aria-current={index === selectedProject ? "true" : undefined}
               />
             ))}
           </div>

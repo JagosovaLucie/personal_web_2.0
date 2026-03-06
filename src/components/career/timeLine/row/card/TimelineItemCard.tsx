@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import "./TimelineItemCard.scss";
 
-type TimelineItemCardProps = {
+type Props = {
   id: string;
   job: boolean;
   opened: boolean;
@@ -13,7 +13,7 @@ const TimelineItemCard = ({
   job,
   opened,
   handleToggle,
-}: TimelineItemCardProps) => {
+}: Props) => {
   const { t } = useTranslation();
   const path = `career_page.timeline.${id}`;
 
