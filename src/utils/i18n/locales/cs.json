@@ -35,7 +35,7 @@
         "technologies": "Javascript, Bootstrap, Webflow, GitHub"
       },
       "job2": {
-        "title": "react typescript developer",
+        "title": "react developer",
         "company": "urc systems",
         "period": "04 2025 – 09 2025",
         "description": "Podílela jsem se na vývoji front-endového rozhraní bezpečnostních systémů ve vojenském sektoru. Vyvíjela jsem nové funkcionality a komponenty v Reactu s TypeScriptem.",
@@ -46,7 +46,7 @@
   "portfolio_page": {
     "project1": {
       "project_name": "Investiční Kalkulačka",
-      "project_description": "Kalkulačka umožňuje zadat parametry a získat přehledné vyhodnocení investice v čase. Validovaný formulář odesílá vstupní parametry přes REST API a zpracované výsledky zobrauje v grafu. <highlight>!Projekt ve vývoji!</highlight>"
+      "project_description": "Kalkulačka umožňuje zadat parametry a získat přehledné vyhodnocení investice v čase. Validovaný formulář odesílá vstupní parametry přes REST API a zpracované výsledky zobrauje v grafu."
     },
     "project2": {
       "project_name": "Sestav HB",

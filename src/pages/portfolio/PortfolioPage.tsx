@@ -21,7 +21,7 @@ const PORTFOLIO_ITEMS: Project[] = [
   {
     id: "project1",
     image: calculatorImage,
-    demoLink: "https://jagosoft-calculator.netlify.app",
+    demoLink: "https://investmentcalculator.cz",
     technologies: ["react", "ts", "scss"],
   },
   {
