@@ -4,6 +4,7 @@
     padding: 0;
     background: transparent;
     cursor: pointer;
+    perspective: 500px;
   }
 
   /* otáčení */
@@ -13,7 +14,6 @@
     height: 30px;
     transform-style: preserve-3d;
     transition: transform 0.4s ease;
-    perspective: 500px;
   }
 
   .lang-flip--flipped {
@@ -26,6 +26,7 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .lang-face--front {

@@ -35,7 +35,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-text">
-        © {new Date().getFullYear()} {t("footer.text")}
+        &copy; {new Date().getFullYear()} {t("footer.text")}
       </div>
     </footer>
   );

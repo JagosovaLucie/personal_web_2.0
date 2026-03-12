@@ -33,7 +33,9 @@
   &__container {
     display: flex;
     touch-action: pan-y pinch-zoom;
-    margin-left: calc(var(--slide-spacing) * -1); // spacing mezi slidy (doporučený pattern)
+    margin-left: calc(
+      var(--slide-spacing) * -1
+    ); // spacing mezi slidy (doporučený pattern)
   }
 
   &__slide {
@@ -56,7 +58,8 @@
     gap: space(5);
     margin-top: space(6);
     opacity: 0;
-    animation: portfolio-dot-pop 0.35s ease 0.9s forwards;
+    animation: portfolio-dot-pop 0.35s ease forwards;
+    animation-delay: 0.9s;
   }
 
   &__dot {
@@ -69,16 +72,11 @@
     cursor: pointer;
     transition: border-color 0.2s ease;
 
-    &:hover {
+    &:hover:not(.active) {
       border-color: var(--color-text-1);
     }
 
-    &:focus-visible {
-      outline: 2px solid var(--color-text);
-      outline-offset: 3px;
-    }
-
-    &.is-selected {
+    &.active {
       background: var(--color-text);
       border-color: var(--color-text);
     }
@@ -94,5 +92,12 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* breakpoints */
+@include max(md) {
+  .embla__dots {
+    animation-delay: 0.4s;
   }
 }

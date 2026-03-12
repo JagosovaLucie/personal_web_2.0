@@ -14,7 +14,7 @@ export type Project = {
   image: string;
   demoLink: string;
   technologies: TechnologyId[];
-  githubUrl?: string;
+  githubUrl?: string; //nezadávám když nemám gitHub link
 };
 
 const PORTFOLIO_ITEMS: Project[] = [
@@ -96,16 +96,17 @@ const PortfolioPage = () => {
           </div>
         </div>
 
+        {/* tečky */}
         {scrollDots.length > 1 && (
           <div className="embla__dots">
             {scrollDots.map((_, index) => (
               <button
                 key={index}
                 type="button"
-                className={`embla__dot ${index === selectedProject ? "is-selected" : ""}`}
+                className={`embla__dot ${index === selectedProject ? "active" : ""}`}
                 onClick={() => goTo(index)}
-                aria-label={`Přejít na pozici ${index + 1}`}
-                aria-current={index === selectedProject ? "true" : undefined}
+                aria-label={`Přejít na stránku ${index + 1}`}
+                aria-current={index === selectedProject ? "page" : undefined}
               />
             ))}
           </div>

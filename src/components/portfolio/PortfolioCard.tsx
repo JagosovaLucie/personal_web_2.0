@@ -79,8 +79,9 @@ const ProjectCard = ({ project }: ProjectProps) => {
             target="_blank"
             rel="noopener noreferrer"
             className="github-link"
+            aria-label="Otevřít GitHub repozitář"
           >
-            <GithubIcon />
+            <GithubIcon aria-hidden="true" focusable="false" />
           </a>
         )}
       </div>

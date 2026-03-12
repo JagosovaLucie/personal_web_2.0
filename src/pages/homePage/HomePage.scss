@@ -11,12 +11,12 @@
 
   /* -------------------text */
   .home-page-h1 {
-    font-size: 110px;
+    font-size: 90px;
     color: var(--color-text);
   }
 
   .home-page-p {
-    font-size: 90px;
+    font-size: 70px;
     color: var(--color-text-1);
   }
 
@@ -64,8 +64,13 @@
         transform: translateY(10px);
         animation: hero-dot-pop 0.35s ease forwards;
 
-        &:hover:not(.hero-dot-active) {
+        &:hover:not(.active) {
           border-color: var(--color-text-1);
+        }
+
+        &.active {
+          background: var(--color-text);
+          border-color: var(--color-text);
         }
 
         /* zpoždění teček */
@@ -74,11 +79,6 @@
             animation-delay: ($i - 1) * 0.06s;
           }
         }
-      }
-
-      .hero-dot-active {
-        background: var(--color-text);
-        border-color: var(--color-text);
       }
     }
   }

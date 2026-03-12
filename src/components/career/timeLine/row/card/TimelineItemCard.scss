@@ -13,7 +13,7 @@
   &.open-card {
     transform: translateY(-2px);
 
-    .timeline-card-footer {
+    .timeline-card-content {
       max-height: 600px;
       padding-top: space(4);
     }
@@ -28,15 +28,30 @@
     text-transform: uppercase;
   }
 
-  /* -------------------------------- karta header: název pozice + firma + šipka */
+  /* -------------------------------- zavřená karta: název pozice + firma + šipka */
   .timeline-card-header {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
   }
 
-  //wrapper pro název firmy a šipku
+  /* protože h3 má default margin */
+  .timeline-card-title {
+    margin: 0;
+    font: inherit;
+  }
+
+  .timeline-card-company {
+    margin: 0;
+  }
+
   .timeline-card-company-toggle {
     width: 100%;
     display: flex;
@@ -47,9 +62,6 @@
 
   /*  wrapper pro šipku */
   .timeline-card-toggle {
-    border: none;
-    background: none;
-    padding: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -65,19 +77,20 @@
     transition: transform 0.5s ease-out;
   }
 
-  /* šipka – stav při otevření */
+  /* otočená šipka – při otevření */
   .timeline-card-toggle.is-open .timeline-card-toggle-icon {
     transform: rotateX(180deg) rotate(45deg);
   }
 
-  /* -------------------------------- karta body */
-  .timeline-card-footer {
+  .timeline-card-content {
     display: flex;
     justify-content: space-between;
     color: var(--color-text-3);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease-out, padding-top 0.35s ease-out;
+    transition:
+      max-height 0.35s ease-out,
+      padding-top 0.35s ease-out;
   }
 
   .timeline-card-body {
@@ -98,9 +111,14 @@
 
   .timeline-card-period {
     align-self: flex-start;
+    margin: 0;
   }
 
-  /* breakpointy */
+  .timeline-card-text {
+    margin: 0;
+  }
+
+  /* -------------------------------- breakpointy */
   @include max(md) {
     padding: space(5) space(6);
 
@@ -120,13 +138,14 @@
       justify-content: space-between;
     }
 
-    .timeline-card-footer {
+    .timeline-card-content {
       flex-direction: column;
       align-items: flex-start;
     }
   }
 }
 
+/* -------------------------------- animace pro otazník */
 /* styly pro otazník */
 .timeline-card-empty {
   font-family: "Jersey 25", sans-serif;
@@ -135,7 +154,6 @@
   animation: fadePulse 1.5s ease-in-out infinite;
 }
 
-/* -------------------------------- animace */
 /* animace pro otazník */
 @keyframes fadePulse {
   0% {

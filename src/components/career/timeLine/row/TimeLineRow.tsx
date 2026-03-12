@@ -16,9 +16,8 @@ const TimelineRow = ({ onePosition, opened, onToggle }: Props) => {
         <span className="timeline-year">{onePosition.year}</span>
       </div>
 
-      {/* 2) prostřední sloupec – osa + kulička */}
+      {/* 2) prostřední sloupec – kulička */}
       <div className="timeline-axis-cell">
-        <div className="timeline-axis-line" />
         <div className="timeline-dot" />
       </div>
 

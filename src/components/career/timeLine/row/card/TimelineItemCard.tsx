@@ -8,14 +8,10 @@ type Props = {
   handleToggle: () => void;
 };
 
-const TimelineItemCard = ({
-  id,
-  job,
-  opened,
-  handleToggle,
-}: Props) => {
+const TimelineItemCard = ({ id, job, opened, handleToggle }: Props) => {
   const { t } = useTranslation();
-  const path = `career_page.timeline.${id}`;
+  const translationPath = `career_page.timeline.${id}`;
+  const contentId = `timeline-card-content-${id}`;
 
   if (!job) {
     return (
@@ -28,41 +24,54 @@ const TimelineItemCard = ({
   return (
     <article className={`timeline-card ${opened ? "open-card" : ""}`}>
       {/* ----------hlavička karty */}
-      <header className="timeline-card-header" onClick={handleToggle}>
-        <p className="timeline-card-title">{t(`${path}.title`)}</p>
+      <button
+        type="button"
+        className="timeline-card-header"
+        onClick={handleToggle}
+        aria-expanded={opened}
+        aria-controls={contentId}
+      >
+        <h3 className="timeline-card-title">{t(`${translationPath}.title`)}</h3>
 
         {/* šipka */}
-        <div className="timeline-card-company-toggle">
-          <p className="timeline-card-company">{t(`${path}.company`)}</p>
+        <span className="timeline-card-company-toggle">
+          <span className="timeline-card-company">{t(`${translationPath}.company`)}</span>
 
-          <button className={`timeline-card-toggle ${opened ? "is-open" : ""}`}>
+          <span
+            className={`timeline-card-toggle ${opened ? "is-open" : ""}`}
+            aria-hidden="true"
+          >
             <span className="timeline-card-toggle-icon" />
-          </button>
-        </div>
-      </header>
+          </span>
+        </span>
+      </button>
+
       {/* ----------tělo karty po rozbalení */}
-      <footer className={`timeline-card-footer ${opened ? "footer-open" : ""}`}>
+      <div
+        id={contentId}
+        className={`timeline-card-content ${opened ? "content-open" : ""}`}
+      >
         <div className="timeline-card-body">
           {/* délka trvání */}
           <div className="timeline-card-row">
-            <p className="timeline-card-period">{t(`${path}.period`)}</p>
+            <p className="timeline-card-period">{t(`${translationPath}.period`)}</p>
           </div>
           {/* náplň práce */}
           <div className="timeline-card-row">
             <p className="timeline-card-label">
               {t("career_page.timeline.description_label")}:
             </p>
-            <p className="timeline-card-text">{t(`${path}.description`)}</p>
+            <p className="timeline-card-text">{t(`${translationPath}.description`)}</p>
           </div>
           {/* technologie */}
           <div className="timeline-card-row">
             <p className="timeline-card-label">
               {t("career_page.timeline.technologies_label")}:
             </p>
-            <p className="timeline-card-text">{t(`${path}.technologies`)}</p>
+            <p className="timeline-card-text">{t(`${translationPath}.technologies`)}</p>
           </div>
         </div>
-      </footer>
+      </div>
     </article>
   );
 };

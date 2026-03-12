@@ -1,48 +1,60 @@
 .timeline {
   display: flex;
   flex-direction: column;
-  row-gap: space(10);
+  row-gap: space(11);
   padding-top: $padding-top-xl;
   padding-left: 80px;
   padding-right: 80px;
+
+  /* -------------timeline osa */
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 227px;
+    transform: translateX(-50%);
+    width: 4px;
+    background-color: var(--color-text-4);
+  }
+
+  /* šipka nahoře */
+  &::after {
+    content: "";
+    position: absolute;
+    left: 227px;
+    top: 15px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 20px;
+    height: 20px;
+    border-top: 4px solid var(--color-text-4);
+    border-left: 4px solid var(--color-text-4);
+  }
 
   /* breakpointy */
   @include max(lg) {
     padding-left: 40px;
     padding-right: 40px;
+    &::before {
+      left: 152px;
+    }
+    &::after {
+      left: 152px;
+    }
   }
 
   @include max(md) {
     padding-top: $padding-top-md;
     padding-left: 0;
     padding-right: 0;
-      row-gap: space(8);
-
-    /* osa pouze na mobilu */
-    position: relative;
-
+    row-gap: space(8);
     &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
       left: 20px;
-      transform: translateX(-50%);
-      width: 4px;
-      background-color: var(--color-text-4);
     }
-
-    /* šipka nahoře */
     &::after {
-      content: "";
-      position: absolute;
       left: 20px;
-      top: 15px;
-      transform: translate(-50%, -50%) rotate(45deg);
-      width: 20px;
-      height: 20px;
-      border-top: 4px solid var(--color-text-4);
-      border-left: 4px solid var(--color-text-4);
     }
   }
 }

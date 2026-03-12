@@ -13,17 +13,15 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   selectedLang,
   onChangeLanguage,
 }) => {
-  const handleClick = () => {
+  const handleClick = () =>
     onChangeLanguage(selectedLang === "cs" ? "en" : "cs");
-  };
-
-  const nextLang = selectedLang === "cs" ? "en" : "cs";
-  const showCsFlag = nextLang === "cs";
 
   return (
     <div className="language-switcher">
-      <button className="lang-button" onClick={handleClick}>
-        <div className={`lang-flip ${showCsFlag ? "" : "lang-flip--flipped"}`}>
+      <button className="lang-button" onClick={handleClick} aria-label="přepínač jazyka">
+        <div
+          className={`lang-flip ${selectedLang === "cs" ? "lang-flip--flipped" : ""}`}
+        >
           <img
             src={CSflag}
             className="lang-face lang-face--front"

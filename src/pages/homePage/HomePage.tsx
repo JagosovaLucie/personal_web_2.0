@@ -35,14 +35,15 @@ const HomePage = () => {
 
   return (
     <section className="hero-wrapper">
-      <div>
+      <article>
         <h1 className="home-page-h1">{t("home_page.h1_text")}</h1>
 
         <p className="home-page-p">
           <span className="typewriter-homepage">{typedText}</span>
         </p>
-      </div>
+      </article>
 
+      {/* tečky */}
       {isFinished && (
         <div className="hero-dots hero-dots-visible">
           {DOT_LINKS.map(({ path, key }) => (

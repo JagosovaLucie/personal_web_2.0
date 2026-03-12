@@ -10,18 +10,16 @@ import Layout from "./layout/Layout";
 
 const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="skills" element={<SkillsPage />} />
-          <Route path="portfolio" element={<PortfolioPage />} />
-          <Route path="career" element={<CarrerPage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="skills" element={<SkillsPage />} />
+        <Route path="portfolio" element={<PortfolioPage />} />
+        <Route path="career" element={<CarrerPage />} />
+        <Route path="contact" element={<ContactPage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Route>
+    </Routes>
   );
 };
 

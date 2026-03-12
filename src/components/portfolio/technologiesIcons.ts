@@ -2,7 +2,7 @@ import reactIcon from "@/assets/images/skills-icons/react-icon.svg";
 import ts from "@/assets/images/skills-icons/typescript-icon.svg";
 import cssIcon from "@/assets/images/skills-icons/css-icon.svg";
 import scss from "@/assets/images/skills-icons/scss-icon.svg";
-import firebase from "../../assets/images/skills-icons/firebase-icon.svg";
+import firebase from "@/assets/images/skills-icons/firebase-icon.svg";
 
 export type TechnologyId = "react" | "ts" | "scss" | "css" | "firebase";
 

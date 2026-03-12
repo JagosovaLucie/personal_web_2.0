@@ -5,7 +5,7 @@ import "./TimeLine.scss";
 export type JobPosition = {
   id: string;
   year: number;
-  job: boolean;
+  job: boolean; //pokud nemám práci, dám false a zobrazí se otazník
 };
 
 const TIMELINE_POSITIONS: JobPosition[] = [
@@ -14,7 +14,7 @@ const TIMELINE_POSITIONS: JobPosition[] = [
   { id: "job1", year: 2023, job: true },
 ];
 
-const TimeLine = () => {
+const     TimeLine = () => {
   const [openId, setOpenId] = useState<string | null>(null);
 
   const handleToggle = (id: string) => {

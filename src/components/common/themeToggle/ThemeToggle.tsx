@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
 import "./ThemeToggle.scss";
 
+/* localStorage */
 const storageKey = "theme-preference";
 
 const getColorPreference = (): "light" | "dark" => {
-  if (typeof globalThis === "undefined") return "light";
-  try {
-    const stored = globalThis.localStorage.getItem(storageKey);
-    return stored === "dark" || stored === "light" ? stored : "light";
-  } catch {
-    return "light";
-  }
+  const stored = localStorage.getItem(storageKey);
+  return stored === "dark" ? "dark" : "light";
 };
 
 const initialTheme = getColorPreference();
@@ -19,6 +15,7 @@ if (typeof document !== "undefined") {
   document.documentElement.setAttribute("data-theme", initialTheme);
 }
 
+/* ----------------------------------------komponenta */
 const ThemeToggle = () => {
   const [theme, setTheme] = useState<"light" | "dark">(initialTheme);
 
@@ -37,11 +34,8 @@ const ThemeToggle = () => {
   return (
     <button
       className="theme-toggle"
-      id="theme-toggle"
-      title="Toggles light & dark"
       onClick={toggle}
-      aria-label={theme}
-      aria-live="polite"
+      aria-label="přepínač světlého a tmavého režimu"
     >
       <svg
         className="sun-and-moon"
