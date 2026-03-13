@@ -40,6 +40,9 @@
     padding: 0;
     margin: 0;
     text-align: left;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   /* protože h3 má default margin */

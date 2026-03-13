@@ -51,7 +51,7 @@ const HomePage = () => {
               key={key}
               to={path}
               className={({ isActive }) =>
-                "hero-dot" + (isActive ? " hero-dot-active" : "")
+                "hero-dot" + (isActive ? " active" : "")
               }
             />
           ))}
