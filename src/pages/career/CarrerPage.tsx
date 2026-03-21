@@ -1,11 +1,7 @@
-import TimeLine from "../../components/career/timeLine/TimeLine"
+import TimeLine from "../../components/career/timeLine/TimeLine";
 
 const CarrerPage = () => {
-  return (
-    <section>
-      <TimeLine />
-    </section>
-  )
-}
+  return <TimeLine />;
+};
 
-export default CarrerPage
+export default CarrerPage;
