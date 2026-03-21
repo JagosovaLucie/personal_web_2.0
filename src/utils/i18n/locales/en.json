@@ -28,11 +28,11 @@
       "description_label": "Job description",
       "technologies_label": "Technology",
       "job1": {
-        "title": "junior front-end developer",
+        "title": "junior developer/tester",
         "company": "royal fox",
         "period": "11 2023 – 02 2024",
         "description": "I contributed to the development of a web application with a focus on UI implementation and styling using Bootstrap. I created and managed both internal and client websites in Webflow. I performed manual testing, including bug identification and reporting. Later, I also took on part of the project management responsibilities, such as sprint planning, task assignment, and overseeing task completion.",
-        "technologies": "Javascript, Bootstrap, Webflow, GitHub,"
+        "technologies": "Javascript, Bootstrap, Webflow, GitHub"
       },
       "job2": {
         "title": "react developer",
@@ -40,6 +40,13 @@
         "period": "04 2025 – 09 2025",
         "description": "I contributed to the development of the front-end interface for security systems in the military sector. I developed new features and components in React with TypeScript.",
         "technologies": "React, TypeScript, MUI, GitLub"
+      },
+      "job3": {
+        "title": "api developer",
+        "company": "ČSOB",
+        "period": "04 2026 – present",
+        "description": "I work on the development and management of APIs for banking services. I focus on implementing and optimizing REST and SOAP APIs and integrating them across various systems.",
+        "technologies": "Broadcom API Gateway, REST API, SOAP API, Postman, Swagger"
       }
     }
   },

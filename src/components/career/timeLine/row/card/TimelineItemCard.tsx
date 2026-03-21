@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./TimelineItemCard.scss";
 
@@ -12,6 +13,18 @@ const TimelineItemCard = ({ id, job, opened, handleToggle }: Props) => {
   const { t } = useTranslation();
   const translationPath = `career_page.timeline.${id}`;
   const contentId = `timeline-card-content-${id}`;
+  // animace výšky obsahu karty
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState(0);
+
+  useLayoutEffect(() => {
+    if (!bodyRef.current) return;
+    if (opened) {
+      setContentHeight(bodyRef.current.scrollHeight);
+    } else {
+      setContentHeight(0);
+    }
+  }, [opened, t, id]);
 
   if (!job) {
     return (
@@ -35,7 +48,9 @@ const TimelineItemCard = ({ id, job, opened, handleToggle }: Props) => {
 
         {/* šipka */}
         <span className="timeline-card-company-toggle">
-          <span className="timeline-card-company">{t(`${translationPath}.company`)}</span>
+          <span className="timeline-card-company">
+            {t(`${translationPath}.company`)}
+          </span>
 
           <span
             className={`timeline-card-toggle ${opened ? "is-open" : ""}`}
@@ -49,26 +64,33 @@ const TimelineItemCard = ({ id, job, opened, handleToggle }: Props) => {
       {/* ----------tělo karty po rozbalení */}
       <div
         id={contentId}
-        className={`timeline-card-content ${opened ? "content-open" : ""}`}
+        className="timeline-card-content"
+        style={{ height: `${contentHeight}px` }}
       >
-        <div className="timeline-card-body">
+        <div ref={bodyRef} className="timeline-card-body">
           {/* délka trvání */}
           <div className="timeline-card-row">
-            <p className="timeline-card-period">{t(`${translationPath}.period`)}</p>
+            <p className="timeline-card-period">
+              {t(`${translationPath}.period`)}
+            </p>
           </div>
           {/* náplň práce */}
           <div className="timeline-card-row">
             <p className="timeline-card-label">
               {t("career_page.timeline.description_label")}:
             </p>
-            <p className="timeline-card-text">{t(`${translationPath}.description`)}</p>
+            <p className="timeline-card-text">
+              {t(`${translationPath}.description`)}
+            </p>
           </div>
           {/* technologie */}
           <div className="timeline-card-row">
             <p className="timeline-card-label">
               {t("career_page.timeline.technologies_label")}:
             </p>
-            <p className="timeline-card-text">{t(`${translationPath}.technologies`)}</p>
+            <p className="timeline-card-text">
+              {t(`${translationPath}.technologies`)}
+            </p>
           </div>
         </div>
       </div>

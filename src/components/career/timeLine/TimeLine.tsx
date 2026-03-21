@@ -9,7 +9,7 @@ export type JobPosition = {
 };
 
 const TIMELINE_POSITIONS: JobPosition[] = [
-  { id: "job3", year: 2026, job: false },
+  { id: "job3", year: 2026, job: true },
   { id: "job2", year: 2025, job: true },
   { id: "job1", year: 2023, job: true },
 ];

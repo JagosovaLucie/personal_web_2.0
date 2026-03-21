@@ -5,18 +5,12 @@
   border: 2px dashed var(--color-text-2);
   width: 100%;
   box-shadow: $shadow-default;
+  transition:
+    transform 0.3s ease-out,
+    box-shadow 0.3s ease-out;
 
   &:hover {
     box-shadow: 0 14px 18px rgba(var(--shadow-color), 0.15);
-  }
-
-  &.open-card {
-    transform: translateY(-2px);
-
-    .timeline-card-content {
-      max-height: 600px;
-      padding-top: space(4);
-    }
   }
 
   /* -------------------------------- společné styly */
@@ -28,7 +22,7 @@
     text-transform: uppercase;
   }
 
-  /* -------------------------------- zavřená karta: název pozice + firma + šipka */
+/* -------------------------------- zavřená karta: název pozice + firma + šipka */
   .timeline-card-header {
     width: 100%;
     display: flex;
@@ -45,7 +39,7 @@
     appearance: none;
   }
 
-  /* protože h3 má default margin */
+/* protože h3 má default margin */
   .timeline-card-title {
     margin: 0;
     font: inherit;
@@ -53,6 +47,7 @@
 
   .timeline-card-company {
     margin: 0;
+    font-size: font-size("2xl");
   }
 
   .timeline-card-company-toggle {
@@ -63,43 +58,47 @@
     gap: space(5);
   }
 
-  /*  wrapper pro šipku */
+/*  wrapper pro šipku */
   .timeline-card-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
 
-  /* šipka – výchozí stav */
+/* šipka – výchozí stav */
   .timeline-card-toggle-icon {
     width: 16px;
     height: 16px;
     border-right: 4px solid var(--color-text-1);
     border-bottom: 4px solid var(--color-text-1);
     transform: rotateX(0deg) rotate(45deg);
-    transition: transform 0.5s ease-out;
+    transition: transform 0.4s ease-out;
   }
 
-  /* otočená šipka – při otevření */
+ /* otočená šipka – při otevření */
   .timeline-card-toggle.is-open .timeline-card-toggle-icon {
     transform: rotateX(180deg) rotate(45deg);
   }
 
   .timeline-card-content {
-    display: flex;
-    justify-content: space-between;
-    color: var(--color-text-3);
-    max-height: 0;
+    height: 0;
     overflow: hidden;
+    color: var(--color-text-3);
+    opacity: 0;
     transition:
-      max-height 0.35s ease-out,
-      padding-top 0.35s ease-out;
+      height 0.35s ease,
+      opacity 0.25s ease;
+  }
+
+  &.open-card .timeline-card-content {
+    opacity: 1;
   }
 
   .timeline-card-body {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+    padding-top: space(4);
   }
 
   .timeline-card-row {
@@ -115,13 +114,14 @@
   .timeline-card-period {
     align-self: flex-start;
     margin: 0;
+    font-size: font-size("2xl");
   }
 
   .timeline-card-text {
     margin: 0;
   }
 
-  /* -------------------------------- breakpointy */
+    /* -------------------------------- breakpointy */
   @include max(md) {
     padding: space(5) space(6);
 
@@ -132,6 +132,10 @@
       font-size: font-size("2xl");
     }
 
+    .timeline-card-company {
+      font-size: font-size("xl");
+    }
+
     .timeline-card-period {
       font-size: font-size("xl");
     }
@@ -139,11 +143,6 @@
     .timeline-card-company-toggle {
       flex-direction: row;
       justify-content: space-between;
-    }
-
-    .timeline-card-content {
-      flex-direction: column;
-      align-items: flex-start;
     }
   }
 }
