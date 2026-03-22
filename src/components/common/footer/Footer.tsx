@@ -12,7 +12,7 @@ const Footer = () => {
       <div className="footer-icons">
         {/* GitHub ikona */}
         <a
-          href="https://github.com/SedlakovaLucie"
+          href="https://github.com/JagosovaLucie"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
@@ -25,7 +25,7 @@ const Footer = () => {
         </a>
         {/* LinkedIn ikona */}
         <a
-          href="https://www.linkedin.com/in/sedlakova-lucie/"
+          href="https://www.linkedin.com/in/luciejagosova/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"

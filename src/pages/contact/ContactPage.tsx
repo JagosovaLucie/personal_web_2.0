@@ -11,12 +11,12 @@ const ContactPage = () => {
     {
       icon: <LinkedinIcon />,
       label: t("contact_page.linkedin"),
-      href: "https://www.linkedin.com/in/sedlakova-lucie/",
+      href: "https://www.linkedin.com/in/luciejagosova/",
     },
     {
       icon: <GithubIcon />,
       label: t("contact_page.github"),
-      href: "https://github.com/SedlakovaLucie",
+      href: "https://github.com/JagosovaLucie",
     },
     {
       icon: <EmailIcon />,

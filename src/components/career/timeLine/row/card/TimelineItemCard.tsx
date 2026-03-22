@@ -14,18 +14,19 @@ const TimelineItemCard = ({ id, job, opened, handleToggle }: Props) => {
   const translationPath = `career_page.timeline.${id}`;
   const contentId = `timeline-card-content-${id}`;
   // animace výšky obsahu karty
-  const bodyRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
 
   useLayoutEffect(() => {
-    if (!bodyRef.current) return;
+    if (!cardRef.current) return;
     if (opened) {
-      setContentHeight(bodyRef.current.scrollHeight);
+      setContentHeight(cardRef.current.scrollHeight);
     } else {
       setContentHeight(0);
     }
   }, [opened, t, id]);
 
+  // pokud není práce, zobrazí se otazník
   if (!job) {
     return (
       <article className="timeline-card-empty">
@@ -65,9 +66,9 @@ const TimelineItemCard = ({ id, job, opened, handleToggle }: Props) => {
       <div
         id={contentId}
         className="timeline-card-content"
-        style={{ height: `${contentHeight}px` }}
+        style={{ height: `${contentHeight}px`}}
       >
-        <div ref={bodyRef} className="timeline-card-body">
+        <div ref={cardRef} className="timeline-card-body">
           {/* délka trvání */}
           <div className="timeline-card-row">
             <p className="timeline-card-period">

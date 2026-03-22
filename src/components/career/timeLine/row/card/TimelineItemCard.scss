@@ -22,7 +22,7 @@
     text-transform: uppercase;
   }
 
-/* -------------------------------- zavřená karta: název pozice + firma + šipka */
+  /* -------------------------------- zavřená karta: název pozice + firma + šipka */
   .timeline-card-header {
     width: 100%;
     display: flex;
@@ -39,7 +39,7 @@
     appearance: none;
   }
 
-/* protože h3 má default margin */
+  /* protože h3 má default margin */
   .timeline-card-title {
     margin: 0;
     font: inherit;
@@ -58,14 +58,14 @@
     gap: space(5);
   }
 
-/*  wrapper pro šipku */
+  /*  wrapper pro šipku */
   .timeline-card-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
 
-/* šipka – výchozí stav */
+  /* šipka – výchozí stav */
   .timeline-card-toggle-icon {
     width: 16px;
     height: 16px;
@@ -75,16 +75,16 @@
     transition: transform 0.4s ease-out;
   }
 
- /* otočená šipka – při otevření */
+  /* otočená šipka – při otevření */
   .timeline-card-toggle.is-open .timeline-card-toggle-icon {
     transform: rotateX(180deg) rotate(45deg);
   }
 
+  /* -------------------------------- otevřená karta */
   .timeline-card-content {
-    height: 0;
+    opacity: 0;
     overflow: hidden;
     color: var(--color-text-3);
-    opacity: 0;
     transition:
       height 0.35s ease,
       opacity 0.25s ease;
@@ -121,7 +121,7 @@
     margin: 0;
   }
 
-    /* -------------------------------- breakpointy */
+  /* -------------------------------- breakpointy */
   @include max(md) {
     padding: space(5) space(6);
 

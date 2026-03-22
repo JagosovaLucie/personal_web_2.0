@@ -35,14 +35,14 @@ const PORTFOLIO_ITEMS: Project[] = [
     image: cashflowImage,
     demoLink: "https://expense-log-app.netlify.app",
     technologies: ["react", "ts", "css", "firebase"],
-    githubUrl: "https://github.com/SedlakovaLucie/cashflow-tracker",
+    githubUrl: "https://github.com/JagosovaLucie/cashflow-tracker",
   },
   {
     id: "project4",
     image: weatherImage,
     demoLink: "https://sunandstorm.netlify.app",
     technologies: ["react", "css"],
-    githubUrl: "https://github.com/SedlakovaLucie/weather_app",
+    githubUrl: "https://github.com/JagosovaLucie/weather_app",
   },
 ];
 
