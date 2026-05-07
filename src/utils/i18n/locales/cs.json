@@ -46,7 +46,7 @@
         "company": "ČSOB",
         "period": "04 2026 – současnost",
         "description": "Pracuji na vývoji a správě API pro bankovní služby. Zaměřuji se na implementaci a optimalizaci REST a SOAP a jejich integraci napříč systémy.",
-        "technologies": "Broadcom API Gateway, REST API, SOAP API, Postman, Swagger"
+        "technologies": "Layer7 API Gateway, SoapUI, Swagger, Kibana"
       }
     }
   },
